@@ -1,0 +1,113 @@
+.pikatag-master-container {
+  border:1px solid #CCC;
+  border-radius: 4px;
+
+  background: #FFF;
+
+  padding: 4px 6px;
+  width: 300px;
+  height: 100%;
+
+  // Make sure the tags are align left
+  text-align: left;
+
+  overflow-y: auto;
+
+  .pikatag-fake-input {
+    padding: 0;
+  }
+}
+
+.pikatag-tag {
+  border: 1px solid #a5d24a;
+
+  border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+
+  display: inline-block;
+  padding: 5px;
+
+  background: #cde69c;
+  color: #638421;
+
+  cursor: pointer;
+
+  margin: 2px;
+  font-size: 13px;
+
+  &:after {
+    content: ' X';
+  }
+}
+
+
+
+// Fake input could also be outside the container
+.pikatag-fake-input {
+  width: 95%; // to prevent x overflow
+  padding: 4px 6px;
+
+  font-size: 13px;
+
+  &.without-border {
+    border: 1px solid transparent; // most important bit, make it looks NOT like a textbox
+
+    background: transparent;
+    color: #000;
+    outline: 0px;
+  }
+}
+
+.pikatag-fake-input--without-border {
+  border: 1px solid transparent; // most important bit, make it looks NOT like a textbox
+
+  background: transparent;
+  color: #000;
+  outline: 0px;
+}
+
+.pikatag-fake-input--invalid {
+  background: #FBD8DB;
+  color: #90111A ;
+}
+
+// Autocomplete result could be out of tag container
+.pikatag-autocomplete-result {
+  padding: 0px;
+  border: 1px solid black;
+  background-color: white;
+  overflow: hidden;
+  // hidden on startup
+  display: none;
+  // Make it look like dropdown
+  position: absolute;
+
+  ul {
+    width: 100%;
+    list-style-position: outside;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    margin: 0px;
+    padding: 2px 5px;
+    cursor: default;
+    display: block;
+
+    font: menu;
+    font-size: 12px;
+
+    // it is very important, if line-height not setted or setted
+    // in relative units scroll will be broken in firefox
+    line-height: 16px;
+    overflow: hidden;
+
+    &.pikatag-ac-item--selected{
+      background-color: #00008b;
+      color: #ffffff;
+    }
+  }
+}
