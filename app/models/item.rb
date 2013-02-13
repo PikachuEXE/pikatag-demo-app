@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :tag_list
 
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
