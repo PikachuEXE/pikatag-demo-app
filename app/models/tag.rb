@@ -6,11 +6,11 @@ class Tag < ActiveRecord::Base
 
   SEPERATOR = ','
 
-  def self.tag_list
+  def self.to_tag_list
     pluck(:name).join(SEPERATOR)
   end
 
-  def self.tag_list=(tag_list_str)
+  def self.from_tag_list(tag_list_str)
     tag_names = tag_list_str.split(SEPERATOR).reject(&:blank?)
     tag_names.collect do |tag_name|
       find_or_create_by_name(tag_name)
