@@ -1,0 +1,6 @@
+#page-item-new
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list
+
+    = f.button :submit

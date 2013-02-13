@@ -1,0 +1,13 @@
+#page-item-index
+  = link_to new_item_path do
+    = 'New Item'
+
+  %table
+    %thead
+      %tr
+        %th Name
+        %th Tags
+    %tbody
+      = content_tag_for :tr, @items do |item|
+        %td= item.name
+        %td= item.tag_list
