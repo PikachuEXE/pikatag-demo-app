@@ -1,6 +1,45 @@
 #page-item-new
   = simple_form_for @item do |f|
     = f.input :name
-    = f.input :tag_list
+    = f.input :tag_list, input_html: {id: 'pikatag-default'}
+
+    = f.button :submit
+
+  = simple_form_for @item do |f|
+    = text_field_tag 'custom-input', nil, id: 'the-custom-input'
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-with-custom-input'}
+
+    = f.button :submit
+
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-with-limit'}
+
+    = f.button :submit
+
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-with-tag-container'}
+
+    #the-tag-container{style: 'border: thin dashed black'}
+
+    = f.button :submit
+
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-without-backspace'}
+
+    = f.button :submit
+
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-with-autocomplete'}
+
+    = f.button :submit
+
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-with-debug'}
 
     = f.button :submit
