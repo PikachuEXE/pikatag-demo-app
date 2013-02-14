@@ -171,6 +171,15 @@ $.fn.pikatag = (options = {}) ->
 
       $fake_input.appendTo($input_wrapper)
 
+      ## Events registering
+      # Click on holder = focus on fake input
+      $holder.click (event) ->
+        realInput = $(this).data($.pikatag.DATA_KEY_NAMES.realInput)
+        $realInput = $(realInput)
+        fakeInput = $realInput.data($.pikatag.DATA_KEY_NAMES.fakeInput)
+
+        $(fakeInput).focus
+
     else if data.customFakeInput?
       $fake_input = $(data.customFakeInput)
         .prop({
@@ -209,11 +218,6 @@ $.fn.pikatag = (options = {}) ->
     ## Let's deal with data
     unless $this.val() is ""
       $.pikatag.importTags $this, $this.val()
-
-    ## Events registering
-    # Click on holder = focus on fake input
-    $holder.click (event) ->
-      $(".#{$.pikatag.CLASS_NAMES.fakeInput}").focus()
 
     # Auto add tag
     $fake_input.length and $fake_input.keypress (event) ->
