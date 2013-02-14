@@ -226,10 +226,6 @@ $.fn.pikatag = (options = {}) ->
       settings = $(real_input)
                     .data($.pikatag.DATA_KEY_NAMES.settings)
 
-      if $(this).val().length < settings.minChars
-        # no need to show error, just ignore
-        return
-
       triggerKeyCodes = [settings.delimiter.charCodeAt(0)]
       triggerKeyCodes.push $.pikatag.KEYS.ENTER
       if $.inArray(event.keyCode, triggerKeyCodes) >= 0 # pressed enter or delimiter
