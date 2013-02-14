@@ -1,10 +1,23 @@
 #page-item-new
+  %h3 Default Settings
   = simple_form_for @item do |f|
     = f.input :name
     = f.input :tag_list, input_html: {id: 'pikatag-default'}
 
     = f.button :submit
 
+  %hr
+
+  %h3 Without Removing Tag with Backspace
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-without-backspace'}
+
+    = f.button :submit
+
+  %hr
+
+  %h3 With custom input
   = simple_form_for @item do |f|
     = text_field_tag 'custom-input', nil, id: 'the-custom-input'
     = f.input :name
@@ -12,34 +25,32 @@
 
     = f.button :submit
 
+  %hr
+
+  %h3 With Custom Rules like Tag Count and Name Length
+  %h4 Open console to see error messages
   = simple_form_for @item do |f|
     = f.input :name
     = f.input :tag_list, input_html: {id: 'pikatag-with-limit'}
 
     = f.button :submit
 
+  %hr
+
+  %h3 With Custom Tag Container
   = simple_form_for @item do |f|
     = f.input :name
     = f.input :tag_list, input_html: {id: 'pikatag-with-tag-container'}
 
-    #the-tag-container{style: 'border: thin dashed black'}
+    #the-tag-container{style: 'border: thin dashed black; padding: 5px;'}
 
     = f.button :submit
 
-  = simple_form_for @item do |f|
-    = f.input :name
-    = f.input :tag_list, input_html: {id: 'pikatag-without-backspace'}
+  %hr
 
-    = f.button :submit
-
+  %h3 With Local Auto Complete
   = simple_form_for @item do |f|
     = f.input :name
     = f.input :tag_list, input_html: {id: 'pikatag-with-autocomplete'}
-
-    = f.button :submit
-
-  = simple_form_for @item do |f|
-    = f.input :name
-    = f.input :tag_list, input_html: {id: 'pikatag-with-debug'}
 
     = f.button :submit
