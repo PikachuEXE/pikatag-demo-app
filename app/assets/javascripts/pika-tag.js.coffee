@@ -697,3 +697,43 @@ Code sample for using local source
 #        list_item # reutrn the dom/jQuery object for append
 #  })
 
+###
+Code sample for using ajax source
+###
+#$ ->
+#  $("#page-edit-my-skills .skill-input").pikatag({
+#    placeholder: "Add a skill..."
+#    minChars: 2
+#
+#    autocomplete:
+#      source: (query, obj, render_callback) ->
+#
+#        results = []
+#
+#        $.ajax
+#          url: '/skills.json'
+#          data:
+#            q: query
+#
+#          success: (results) ->
+#            render_callback(obj, results)
+#          error: ->
+#            # do nothing
+#
+#
+#      results
+#      filter_func: (query_string) ->
+#        new RegExp(".*#{query_string}.*").test(this.text)
+#      render_func: ->
+#        list_item = document.createElement('li')
+#        $list_item = $(list_item)
+#
+#        # Set the structure of list item
+#        $list_item.text("#{@text} (#{@count}) - #{@description}") # assume source item is string already
+#
+#        # Set the text to insert when this item is selected
+#        $list_item.data('value', @text)
+#
+#        list_item # reutrn the dom/jQuery object for append
+#  })
+
