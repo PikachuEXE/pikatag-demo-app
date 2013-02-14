@@ -90,7 +90,7 @@ $.pikatag.defaults ||=
     # query_string: well the user input, just create an simple regexp to test it, see Regexp.test
     #
     # return true or false on whether "this" should be add to result
-    filter_func: ->
+    filter_func: (query_string) ->
       new RegExp(".*#{query_string}.*").test(this) # default just test the item (assume to be string)
     # This is the function called for autocomplete dropdown
     #
