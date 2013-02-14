@@ -17,9 +17,21 @@ jQuery ($) ->
   $('#pikatag-without-backspace').pikatag
     removeWithBackspace: false
 
-  $('#pikatag-with-autocomplete').pikatag
+  $('#pikatag-with-autocomplete-local').pikatag
     autocomplete:
       source: ['Tag1', 'Tag2', 'Tag3', 'Ruby on Rails', 'Rails', 'Ruby']
 
-  $('#pikatag-with-debug').pikatag
-    debug: true
+  $('#pikatag-with-autocomplete-ajax').pikatag
+    autocomplete:
+      source: (query, obj, render_callback) ->
+        results = []
+
+        $.ajax
+          url: '/skills.json'
+          data:
+            q: query
+
+          success: (results) ->
+            render_callback(obj, results)
+          error: ->
+            # do nothing

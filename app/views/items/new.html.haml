@@ -51,6 +51,15 @@
   %h3 With Local Auto Complete
   = simple_form_for @item do |f|
     = f.input :name
-    = f.input :tag_list, input_html: {id: 'pikatag-with-autocomplete'}
+    = f.input :tag_list, input_html: {id: 'pikatag-with-autocomplete-local'}
+
+    = f.button :submit
+
+  %hr
+
+  %h3 With AJAX Auto Complete
+  = simple_form_for @item do |f|
+    = f.input :name
+    = f.input :tag_list, input_html: {id: 'pikatag-with-autocomplete-ajax'}
 
     = f.button :submit
