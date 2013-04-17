@@ -10,6 +10,7 @@ gem 'foreman'
 
 # Database
 gem 'mongoid', '~> 3.0.0'
+gem 'mongoid_rails_migrations'
 
 # Strong Parameters
 gem 'strong_parameters'
