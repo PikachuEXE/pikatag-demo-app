@@ -11,14 +11,14 @@ class Tag
 
   has_and_belongs_to_many :items
 
-  SEPERATOR = ','
+  SEPARATOR = ','
 
   def self.to_tag_list(tags)
-    tags.collect(&:name).join(SEPERATOR)
+    tags.collect(&:name).join(SEPARATOR)
   end
 
   def self.from_tag_list(tag_list_str)
-    tag_names = tag_list_str.split(SEPERATOR).reject(&:blank?)
+    tag_names = tag_list_str.split(SEPARATOR).reject(&:blank?)
     tag_names.collect do |tag_name|
       find_or_create_by_name(tag_name)
     end
