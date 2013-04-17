@@ -11,7 +11,11 @@ gem 'foreman'
 gem 'sqlite3'
 
 gem 'haml-rails'
+gem 'jquery-rails'
+
 gem 'simple_form'
+
+gem 'quiet_assets'
 
 
 # Gems used only for assets and not required
@@ -25,8 +29,6 @@ group :assets do
 
   gem 'uglifier'
 end
-
-gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
