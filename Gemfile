@@ -41,6 +41,9 @@ group :development, :test do
   gem 'shoulda-matchers', group: :test # More Rails matchers
   gem 'rspec-given', group: :test # Given/When/Then
 
+  gem 'database_cleaner', group: :test
+  gem 'mongoid-rspec', group: :test
+
   # Generate fake data
   gem 'ffaker'
   gem 'factory_girl_rails'
