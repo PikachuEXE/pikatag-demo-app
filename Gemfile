@@ -9,7 +9,10 @@ gem 'unicorn'
 gem 'foreman'
 
 # Database
-gem "mongoid", "~> 3.0.0"
+gem 'mongoid', '~> 3.0.0'
+
+# Strong Parameters
+gem 'strong_parameters'
 
 gem 'haml-rails'
 gem 'jquery-rails'
