@@ -38,7 +38,6 @@ fi
 echo "Now pushing to heroku @$REMOTE"
 git push $REMOTE master $FORCE && \
 heroku maintenance:on    --remote $REMOTE                 && \
-heroku pgbackups:capture --remote $REMOTE --expire        && \
 heroku run               --remote $REMOTE rake db:migrate && \
 heroku maintenance:off   --remote $REMOTE
 heroku restart           --remote $REMOTE

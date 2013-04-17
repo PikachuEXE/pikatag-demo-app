@@ -8,7 +8,12 @@ gem 'rails', '3.2.12'
 gem 'unicorn'
 gem 'foreman'
 
-gem 'sqlite3'
+# Database
+gem 'mongoid', '~> 3.0.0'
+gem 'mongoid_rails_migrations'
+
+# Strong Parameters
+gem 'strong_parameters'
 
 gem 'haml-rails'
 gem 'jquery-rails'

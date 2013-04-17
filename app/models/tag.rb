@@ -1,11 +1,15 @@
-class Tag < ActiveRecord::Base
-  attr_accessible :name
+class Tag
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  has_many :taggings,
-           inverse_of: :tag, dependent: :destroy
+  field :name, type: String
 
   validates_presence_of :name
   validates_uniqueness_of :name
+
+  index({name: 1})
+
+  has_and_belongs_to_many :items
 
   SEPERATOR = ','
 
