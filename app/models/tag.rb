@@ -9,8 +9,8 @@ class Tag < ActiveRecord::Base
 
   SEPERATOR = ','
 
-  def self.to_tag_list
-    pluck(:name).join(SEPERATOR)
+  def self.to_tag_list(tags)
+    tags.collect(&:name).join(SEPERATOR)
   end
 
   def self.from_tag_list(tag_list_str)

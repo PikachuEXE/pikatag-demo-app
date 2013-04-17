@@ -9,7 +9,7 @@ class Item < ActiveRecord::Base
   has_many :tags, through: :taggings
 
   def tag_list
-    tags.to_tag_list
+    Tag.to_tag_list(tags)
   end
 
   def tag_list=(tag_list_str)
