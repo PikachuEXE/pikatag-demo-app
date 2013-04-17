@@ -8,7 +8,7 @@ class SkillsController < ApplicationController
 
     query_str = params[:q]
 
-    tags_found = Tag.where("lower(name) LIKE lower(?)", "%#{query_str}%")
+    tags_found = Tag.search_by_name_alike(query_str)
 
     if tags_found.empty?
       head :not_found and return

@@ -13,6 +13,10 @@ class Tag
 
   SEPARATOR = ','
 
+  def self.search_by_name_alike(name)
+    where(name: /^#{name}/i)
+  end
+
   def self.to_tag_list(tags)
     tags.collect(&:name).join(SEPARATOR)
   end

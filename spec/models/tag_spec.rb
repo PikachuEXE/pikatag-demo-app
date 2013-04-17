@@ -112,5 +112,64 @@ describe Tag do
         end
       end
     end
+
+    describe '.search_by_name_alike' do
+      let(:tag_name_1) {'Tag1'}
+      let(:tag_name_2) {'Tag2'}
+
+      let!(:tag_1) {create(:tag, name: tag_name_1)}
+      let!(:tag_2) {create(:tag, name: tag_name_2)}
+
+
+      subject do
+        described_class.search_by_name_alike(query)
+      end
+
+
+
+      context 'when where is no matched' do
+        let :query do
+          tag_name_1+'asd'
+        end
+
+        it {should be_empty}
+      end
+
+      context 'when there is an exact match' do
+        let :query do
+          tag_name_2
+        end
+
+        it {should include tag_2}
+        it {should_not include tag_1}
+
+        context 'and query got mixed cases' do
+          let :query do
+            tag_name_2.swapcase
+          end
+
+          it {should include tag_2}
+          it {should_not include tag_1}
+        end
+      end
+
+      context 'when there is a match on prefix' do
+        let :query do
+          'Tag'
+        end
+
+        it {should include tag_2}
+        it {should include tag_1}
+
+        context 'and query got mixed cases' do
+          let :query do
+            'Tag'.swapcase
+          end
+
+          it {should include tag_2}
+          it {should include tag_1}
+        end
+      end
+    end
   end
 end
