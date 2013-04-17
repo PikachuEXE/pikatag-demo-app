@@ -35,6 +35,26 @@ group :assets do
   gem 'uglifier'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'fuubar', group: :test
+  gem 'shoulda-matchers', group: :test # More Rails matchers
+  gem 'rspec-given', group: :test # Given/When/Then
+
+  # Generate fake data
+  gem 'ffaker'
+  gem 'factory_girl_rails'
+
+  gem 'spork'
+
+  ## Debugging
+  # lets pry
+  gem 'pry-rails'
+
+  # Load .env into ENV
+  gem 'dotenv-rails'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
