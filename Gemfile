@@ -4,8 +4,9 @@ ruby '2.0.0'
 
 gem 'rails', '3.2.12'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
+# Use unicorn as the app server
+gem 'unicorn'
+gem 'foreman'
 
 gem 'sqlite3'
 
@@ -32,9 +33,6 @@ gem 'jquery-rails'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
