@@ -1,10 +1,11 @@
 class Item < ActiveRecord::Base
   attr_accessible :name, :tag_list
 
-  has_many :taggings, as: :taggable
   validates_presence_of :name
   validates_uniqueness_of :name
 
+  has_many :taggings, as: :taggable,
+           inverse_of: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
   def tag_list
