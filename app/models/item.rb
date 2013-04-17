@@ -1,12 +1,15 @@
-class Item < ActiveRecord::Base
-  attr_accessible :name, :tag_list
+class Item
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :name, type: String
 
   validates_presence_of :name
   validates_uniqueness_of :name
 
-  has_many :taggings, as: :taggable,
-           inverse_of: :taggable, dependent: :destroy
-  has_many :tags, through: :taggings
+  index({name: 1})
+
+  has_and_belongs_to_many :tags
 
   def tag_list
     Tag.to_tag_list(tags)
