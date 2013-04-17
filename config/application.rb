@@ -49,5 +49,10 @@ module PikatagDemoApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+
+    # Mongoid logging
+    Mongoid.logger.level = Logger::DEBUG
+    Moped.logger.level = Logger::DEBUG
   end
 end
