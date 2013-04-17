@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+echo "Where do you want to deploy?"
+select remote in "Staging" "Production" "Cancel"; do
+  case $remote in
+    Staging    ) REMOTE=staging;    break;;
+    Production ) REMOTE=production; break;;
+    Cancel     ) echo "Cancelled."; exit;;
+  esac
+done
+
+echo "Do you really wish to deploy to $REMOTE?"
+select confirm in "Yes" "No"; do
+  case $confirm in
+    Yes ) echo "ok. You asked for it!"; break;;
+    No  ) echo "Cancelled."; exit;;
+  esac
+done
+
+echo "Do you want to use normal push? (1 = normal push, 2 = force push)"
+select confirm in "Yes" "No"; do
+  case $confirm in
+    Yes ) FORCE=;    break;;
+    No  ) FORCE=-f;    break;;
+  esac
+done
+
+if [ "$REMOTE" == "production" ]; then
+  echo "You are about to deploy to $REMOTE... $REMOTE. Are you really really sure?"
+  select confirm in "Yes" "No"; do
+    case $confirm in
+      Yes ) echo "ok. You asked for it... again"; break;;
+      No  ) echo "Cancelled."; exit;;
+    esac
+  done
+fi
+
+echo "Now pushing to heroku @$REMOTE"
+git push $REMOTE master $FORCE && \
+heroku maintenance:on    --remote $REMOTE                 && \
+heroku pgbackups:capture --remote $REMOTE --expire        && \
+heroku run               --remote $REMOTE rake db:migrate && \
+heroku maintenance:off   --remote $REMOTE
+heroku restart           --remote $REMOTE
